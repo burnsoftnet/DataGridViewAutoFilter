@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("BS DataGridViewAutoFilter .NET 4.5")> 
+<Assembly: AssemblyTitle("BS DataGridViewAutoFilter")>
 <Assembly: AssemblyDescription("Add On to the DataGrid to filter out the results")> 
 <Assembly: AssemblyCompany("BurnSoft www.burnsoft.net")> 
-<Assembly: AssemblyProduct("BS DataGridViewAutoFilter")> 
-<Assembly: AssemblyCopyright("Copyright © BurnSoft 2010-2016")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyProduct("BS DataGridViewAutoFilter")>
+<Assembly: AssemblyCopyright("Copyright © BurnSoft 2010-2017")>
+<Assembly: AssemblyTrademark("www.burnsoft.net")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("216764f3-4ca1-49d1-a06c-8ff82f3629ee")> 
+<Assembly: Guid("216764f3-4ca1-49d1-a06c-8ff82f3629ee")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("4.5.1.*")> 
-<Assembly: AssemblyFileVersion("4.5.1.15736")> 
+<Assembly: AssemblyVersion("4.5.0.*")>
+<Assembly: AssemblyFileVersion("4.5.0.15736")>

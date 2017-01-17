@@ -79,3 +79,5 @@ ProgrammaticSetupDemo/obj/Release/build.force
 ProgrammaticSetupDemo/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
 ProgrammaticSetupDemo/obj/Release/ResolveAssemblyReference.cache
 ProgrammaticSetupDemo/obj/Release/TempPE/My Project.Resources.Designer.vb.dll
+DataGridViewAutoFilter/bin/Release/DataGridViewAutoFilter.dll
+DataGridViewAutoFilter/obj/Release/DataGridViewAutoFilter.vbprojResolveAssemblyReference.cache
