@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>\\bsnas2\BurnSoft_Git\microsoft\VS2015\production\DataGridViewAutoFilter.git</projectUrl>
+    <iconUrl>https://avatars0.githubusercontent.com/u/24593581?s=460</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Intial Release</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>BurnSoft VB.NET DataGrid AutoFilter</tags>
+  </metadata>
+</package>

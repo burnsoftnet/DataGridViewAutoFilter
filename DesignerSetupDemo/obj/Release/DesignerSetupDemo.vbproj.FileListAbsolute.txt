@@ -1,0 +1,12 @@
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\bin\Release\DesignerSetupDemo.exe.config
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\bin\Release\DesignerSetupDemo.exe
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\bin\Release\DesignerSetupDemo.pdb
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\bin\Release\DesignerSetupDemo.xml
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\bin\Release\DataGridViewAutoFilter.dll
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\obj\Release\DesignerSetupDemo.vbprojResolveAssemblyReference.cache
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\obj\Release\DesignerSetupDemo.DesignerSetupForm.resources
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\obj\Release\DesignerSetupDemo.Resources.resources
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\obj\Release\DesignerSetupDemo.vbproj.GenerateResource.Cache
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\obj\Release\DesignerSetupDemo.exe
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\obj\Release\DesignerSetupDemo.xml
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\DesignerSetupDemo\obj\Release\DesignerSetupDemo.pdb

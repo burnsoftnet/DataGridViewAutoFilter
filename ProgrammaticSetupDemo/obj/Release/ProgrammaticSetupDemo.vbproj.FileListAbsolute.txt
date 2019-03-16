@@ -1,0 +1,12 @@
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\bin\Release\ProgrammaticSetupDemo.exe.config
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\bin\Release\ProgrammaticSetupDemo.exe
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\bin\Release\ProgrammaticSetupDemo.pdb
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\bin\Release\ProgrammaticSetupDemo.xml
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\bin\Release\DataGridViewAutoFilter.dll
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\obj\Release\ProgrammaticSetupDemo.vbprojResolveAssemblyReference.cache
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\obj\Release\ProgrammaticSetupDemo.Resources.resources
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\obj\Release\ProgrammaticSetupDemo.ProgrammaticSetupForm.resources
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\obj\Release\ProgrammaticSetupDemo.vbproj.GenerateResource.Cache
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\obj\Release\ProgrammaticSetupDemo.exe
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\obj\Release\ProgrammaticSetupDemo.xml
+C:\Users\burnsoft\Source\Repos\DataGridViewAutoFilter\ProgrammaticSetupDemo\obj\Release\ProgrammaticSetupDemo.pdb
