@@ -26,3 +26,5 @@ DataGridViewAutoFilter/bin/
 *.suo
 /DataGridViewAutoFilter.v12.suo
 *.nupkg
+DataGridViewAutoFilterDemo/obj/
+DataGridViewAutoFilterDemo/bin/
