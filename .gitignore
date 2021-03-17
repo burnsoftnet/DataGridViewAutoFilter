@@ -23,3 +23,5 @@ ProgrammaticSetupDemo/bin/
 ProgrammaticSetupDemo/obj/
 DataGridViewAutoFilter/bin/
 .vs/
+*.suo
+/DataGridViewAutoFilter.v12.suo
