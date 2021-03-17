@@ -11,3 +11,6 @@ This is mostly code less, just add the autofilter as a new bound field in your d
 ![](images/sample2.png)
 
 ![](images/sample3.png)
+
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JSW8XEMQVH4BE)]
