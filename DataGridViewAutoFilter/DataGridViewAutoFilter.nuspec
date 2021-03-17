@@ -5,13 +5,20 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>$author$</authors>
-    <owners>$author$</owners>
-    <projectUrl>https://github.com/burnsoftnet/DataGridViewAutoFilter.git</projectUrl>
-    <iconUrl>https://avatars0.githubusercontent.com/u/24593581?s=460</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	  <projectUrl>https://github.com/burnsoftnet/DataGridViewAutoFilter.git</projectUrl>
+	  <owners>burnsoftnet</owners>
+	  <repository type="git" url="https://github.com/burnsoftnet/DataGridViewAutoFilter.git" />
+	  <iconUrl>https://avatars0.githubusercontent.com/u/24593581?s=460</iconUrl>
+	  <icon>bswtsicon.png</icon>
+	  <license type="expression">MIT</license>
+	  <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Intial Release</releaseNotes>
+    <releaseNotes>Updated to .net version 4.7.2</releaseNotes>
     <copyright>Copyright 2010-2021</copyright>
     <tags>BurnSoft VB.NET DataGrid AutoFilter</tags>
   </metadata>
+	<files>
+		<file src="bswtsicon.png" target="" />
+		<file src="bin/$configuration$/$id$.chm" target="content/$id$.chm" />
+	</files>
 </package>
