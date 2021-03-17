@@ -16,68 +16,10 @@ xcuserdata
 # svn & cvs
 .svn
 CVS
-DataGridViewAutoFilter/obj/DataGridViewAutoFilter.vbproj.FileListAbsolute.txt
-DataGridViewAutoFilter/obj/Debug/DataGridViewAutoFilter.dll
-DataGridViewAutoFilter/obj/Debug/DataGridViewAutoFilter.pdb
-DataGridViewAutoFilter/obj/Debug/DataGridViewAutoFilter.Resources.resources
-DataGridViewAutoFilter/obj/Debug/DataGridViewAutoFilter.vbproj.FileListAbsolute.txt
-DataGridViewAutoFilter/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-DataGridViewAutoFilter/obj/Debug/GenerateResource.read.1.tlog
-DataGridViewAutoFilter/obj/Debug/GenerateResource.write.1.tlog
-DataGridViewAutoFilter/obj/Debug/TempPE/My Project.Resources.Designer.vb.dll
-DataGridViewAutoFilter/obj/Release/DataGridViewAutoFilter.dll
-DataGridViewAutoFilter/obj/Release/DataGridViewAutoFilter.Resources.resources
-DataGridViewAutoFilter/obj/Release/DataGridViewAutoFilter.vbproj.FileListAbsolute.txt
-DataGridViewAutoFilter/obj/Release/DataGridViewAutoFilter.vbproj.GenerateResource.Cache
-DataGridViewAutoFilter/obj/Release/DataGridViewAutoFilter.xml
-DataGridViewAutoFilter/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
-DataGridViewAutoFilter/obj/Release/GenerateResource.read.1.tlog
-DataGridViewAutoFilter/obj/Release/GenerateResource.write.1.tlog
-DataGridViewAutoFilter/obj/Release/TempPE/My Project.Resources.Designer.vb.dll
-DesignerSetupDemo/bin/Debug/DataGridViewAutoFilter.dll
-DesignerSetupDemo/bin/Debug/DataGridViewAutoFilter.pdb
-DesignerSetupDemo/bin/Debug/DesignerSetupDemo.exe
-DesignerSetupDemo/bin/Debug/DesignerSetupDemo.exe.config
-DesignerSetupDemo/bin/Debug/DesignerSetupDemo.pdb
-DesignerSetupDemo/bin/Debug/DesignerSetupDemo.vshost.exe
-DesignerSetupDemo/bin/Debug/DesignerSetupDemo.vshost.exe.config
-DesignerSetupDemo/bin/Debug/DesignerSetupDemo.vshost.exe.manifest
-DesignerSetupDemo/bin/Debug/DesignerSetupDemo.xml
-DesignerSetupDemo/obj/Debug/DesignerSetupDemo.DesignerSetupForm.resources
-DesignerSetupDemo/obj/Debug/DesignerSetupDemo.exe
-DesignerSetupDemo/obj/Debug/DesignerSetupDemo.pdb
-DesignerSetupDemo/obj/Debug/DesignerSetupDemo.Resources.resources
-DesignerSetupDemo/obj/Debug/DesignerSetupDemo.vbproj.FileListAbsolute.txt
-DesignerSetupDemo/obj/Debug/DesignerSetupDemo.xml
-DesignerSetupDemo/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-DesignerSetupDemo/obj/Debug/GenerateResource.read.1.tlog
-DesignerSetupDemo/obj/Debug/GenerateResource.write.1.tlog
-DesignerSetupDemo/obj/Debug/TempPE/My Project.Resources.Designer.vb.dll
-DesignerSetupDemo/obj/Debug/TempPE/TestData.Designer.vb.dll
-DesignerSetupDemo/obj/Release/build.force
-DesignerSetupDemo/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
-DesignerSetupDemo/obj/Release/TempPE/My Project.Resources.Designer.vb.dll
-DesignerSetupDemo/obj/Release/TempPE/TestData.Designer.vb.dll
-ProgrammaticSetupDemo/bin/Debug/DataGridViewAutoFilter.dll
-ProgrammaticSetupDemo/bin/Debug/DataGridViewAutoFilter.pdb
-ProgrammaticSetupDemo/bin/Debug/ProgrammaticSetupDemo.exe
-ProgrammaticSetupDemo/bin/Debug/ProgrammaticSetupDemo.exe.config
-ProgrammaticSetupDemo/bin/Debug/ProgrammaticSetupDemo.pdb
-ProgrammaticSetupDemo/bin/Debug/ProgrammaticSetupDemo.xml
-ProgrammaticSetupDemo/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-ProgrammaticSetupDemo/obj/Debug/GenerateResource.read.1.tlog
-ProgrammaticSetupDemo/obj/Debug/GenerateResource.write.1.tlog
-ProgrammaticSetupDemo/obj/Debug/ProgrammaticSetupDemo.exe
-ProgrammaticSetupDemo/obj/Debug/ProgrammaticSetupDemo.pdb
-ProgrammaticSetupDemo/obj/Debug/ProgrammaticSetupDemo.ProgrammaticSetupForm.resources
-ProgrammaticSetupDemo/obj/Debug/ProgrammaticSetupDemo.Resources.resources
-ProgrammaticSetupDemo/obj/Debug/ProgrammaticSetupDemo.vbproj.FileListAbsolute.txt
-ProgrammaticSetupDemo/obj/Debug/ProgrammaticSetupDemo.xml
-ProgrammaticSetupDemo/obj/Debug/ResolveAssemblyReference.cache
-ProgrammaticSetupDemo/obj/Debug/TempPE/My Project.Resources.Designer.vb.dll
-ProgrammaticSetupDemo/obj/Release/build.force
-ProgrammaticSetupDemo/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
-ProgrammaticSetupDemo/obj/Release/ResolveAssemblyReference.cache
-ProgrammaticSetupDemo/obj/Release/TempPE/My Project.Resources.Designer.vb.dll
-DataGridViewAutoFilter/bin/Release/DataGridViewAutoFilter.dll
-DataGridViewAutoFilter/obj/Release/DataGridViewAutoFilter.vbprojResolveAssemblyReference.cache
+DataGridViewAutoFilter/obj/
+DesignerSetupDemo/bin/
+DesignerSetupDemo/obj/
+ProgrammaticSetupDemo/bin/
+ProgrammaticSetupDemo/obj/
+DataGridViewAutoFilter/bin/
+.vs/
