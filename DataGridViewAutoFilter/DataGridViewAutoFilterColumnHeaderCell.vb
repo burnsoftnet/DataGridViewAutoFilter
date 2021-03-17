@@ -1,15 +1,10 @@
 
-Imports DataGridViewAutoFilter
-Imports System
-Imports System.Collections.Generic
+Imports System.Collections.Specialized
 Imports System.ComponentModel
-Imports System.Data
-Imports System.Diagnostics
 Imports System.Drawing
-Imports System.Text
+Imports System.Globalization
 Imports System.Windows.Forms
 Imports System.Windows.Forms.VisualStyles
-Imports System.Collections
 Imports System.Reflection
 
 ''' <summary>
@@ -21,30 +16,30 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' <summary>
     ''' The ListBox used for all drop-down lists. 
     ''' </summary>
-    Private Shared dropDownListBox As New FilterListBox()
+    Private Shared _dropDownListBox As New FilterListBox()
 
     ''' <summary>
     ''' A list of filters available for the owning column stored as 
     ''' formatted and unformatted string values. 
     ''' </summary>
-    Private filters As New System.Collections.Specialized.OrderedDictionary()
+    Private _filters As New OrderedDictionary()
 
     ''' <summary>
     ''' The drop-down list filter value currently in effect for 
     ''' the owning column. 
     ''' </summary>
-    Private selectedFilterValue As String = String.Empty
+    Private _selectedFilterValue As String = String.Empty
 
     ''' <summary>
     ''' The complete filter string currently in effect for the owning column. 
     ''' </summary>
-    Private currentColumnFilter As String = String.Empty
+    Private _currentColumnFilter As String = String.Empty
 
     ''' <summary>
     ''' Indicates whether the DataGridView is currently filtered by the 
     ''' owning column.  
     ''' </summary>
-    Private filtered As Boolean
+    Private _filtered As Boolean
 
     ''' <summary>
     ''' Initializes a new instance of the DataGridViewColumnHeaderCell 
@@ -55,17 +50,17 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' copy property values from.</param>
     Public Sub New(ByVal oldHeaderCell As DataGridViewColumnHeaderCell)
 
-        Me.ContextMenuStrip = oldHeaderCell.ContextMenuStrip
-        Me.ErrorText = oldHeaderCell.ErrorText
-        Me.Tag = oldHeaderCell.Tag
-        Me.ToolTipText = oldHeaderCell.ToolTipText
-        Me.Value = oldHeaderCell.Value
-        Me.ValueType = oldHeaderCell.ValueType
+        ContextMenuStrip = oldHeaderCell.ContextMenuStrip
+        ErrorText = oldHeaderCell.ErrorText
+        Tag = oldHeaderCell.Tag
+        ToolTipText = oldHeaderCell.ToolTipText
+        Value = oldHeaderCell.Value
+        ValueType = oldHeaderCell.ValueType
 
         ' Use HasStyle to avoid creating a new style object
         ' when the Style property has not previously been set. 
         If oldHeaderCell.HasStyle Then
-            Me.Style = oldHeaderCell.Style
+            Style = oldHeaderCell.Style
         End If
 
         ' Copy this type's properties if the old cell is an auto-filter cell. 
@@ -73,11 +68,11 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         Dim filterCell As DataGridViewAutoFilterColumnHeaderCell = _
             TryCast(oldHeaderCell, DataGridViewAutoFilterColumnHeaderCell)
         If filterCell IsNot Nothing Then
-            Me.FilteringEnabled = filterCell.FilteringEnabled
-            Me.AutomaticSortingEnabled = filterCell.AutomaticSortingEnabled
-            Me.DropDownListBoxMaxLines = filterCell.DropDownListBoxMaxLines
-            Me.currentDropDownButtonPaddingOffset = _
-                filterCell.currentDropDownButtonPaddingOffset
+            FilteringEnabled = filterCell.FilteringEnabled
+            AutomaticSortingEnabled = filterCell.AutomaticSortingEnabled
+            DropDownListBoxMaxLines = filterCell.DropDownListBoxMaxLines
+            _currentDropDownButtonPaddingOffset = _
+                filterCell._currentDropDownButtonPaddingOffset
         End If
 
     End Sub
@@ -289,7 +284,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' </summary>
     Private Sub ResetDropDown()
         InvalidateDropDownButtonBounds()
-        If dropDownListBoxShowing Then
+        If _dropDownListBoxShowing Then
             HideDropDownList()
         End If
     End Sub
@@ -302,9 +297,9 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         Dim source As BindingSource = _
             TryCast(Me.DataGridView.DataSource, BindingSource)
         If source Is Nothing OrElse String.IsNullOrEmpty(source.Filter) Then
-            filtered = False
-            selectedFilterValue = "(All)"
-            currentColumnFilter = String.Empty
+            _filtered = False
+            _selectedFilterValue = "(All)"
+            _currentColumnFilter = String.Empty
         End If
     End Sub
 
@@ -380,9 +375,9 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         If Application.RenderWithVisualStyles Then
             Dim state As ComboBoxState = ComboBoxState.Normal
 
-            If dropDownListBoxShowing Then
+            If _dropDownListBoxShowing Then
                 state = ComboBoxState.Pressed
-            ElseIf filtered Then
+            ElseIf _filtered Then
                 state = ComboBoxState.Hot
             End If
             ComboBoxRenderer.DrawDropDownButton(graphics, buttonBounds, state)
@@ -391,7 +386,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
             ' correctly and to offset the down arrow. 
             Dim pressedOffset As Int32 = 0
             Dim state As PushButtonState = PushButtonState.Normal
-            If dropDownListBoxShowing Then
+            If _dropDownListBoxShowing Then
                 state = PushButtonState.Pressed
                 pressedOffset = 1
             End If
@@ -400,7 +395,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
             ' If there is a filter in effect for the column, paint the 
             ' down arrow as an unfilled triangle. If there is no filter 
             ' in effect, paint the down arrow as a filled triangle.
-            If filtered Then
+            If _filtered Then
                 graphics.DrawPolygon(SystemPens.ControlText, New Point() { _
                     New Point( _
                         buttonBounds.Width \ 2 + _
@@ -454,8 +449,8 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         ' while the drop-down list was displayed. This prevents the 
         ' drop-down list from being redisplayed after being hidden in 
         ' the LostFocus event handler. 
-        If lostFocusOnDropDownButtonClick Then
-            lostFocusOnDropDownButtonClick = False
+        If _lostFocusOnDropDownButtonClick Then
+            _lostFocusOnDropDownButtonClick = False
             Return
         End If
 
@@ -548,7 +543,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' Indicates whether dropDownListBox is currently displayed 
     ''' for this header cell. 
     ''' </summary>
-    Private dropDownListBoxShowing As Boolean
+    Private _dropDownListBoxShowing As Boolean
 
     ''' <summary>
     ''' Displays the drop-down filter list. 
@@ -570,28 +565,28 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         ' selecting the current filter if there is one in effect. 
         PopulateFilters()
 
-        Dim filterArray As String() = New String(filters.Count - 1) {}
-        filters.Keys.CopyTo(filterArray, 0)
-        dropDownListBox.Items.Clear()
-        dropDownListBox.Items.AddRange(filterArray)
-        dropDownListBox.SelectedItem = selectedFilterValue
+        Dim filterArray As String() = New String(_filters.Count - 1) {}
+        _filters.Keys.CopyTo(filterArray, 0)
+        _dropDownListBox.Items.Clear()
+        _dropDownListBox.Items.AddRange(filterArray)
+        _dropDownListBox.SelectedItem = _selectedFilterValue
 
         ' Add handlers to dropDownListBox events. 
         HandleDropDownListBoxEvents()
 
         ' Set the size and location of dropDownListBox, then display it. 
         SetDropDownListBoxBounds()
-        dropDownListBox.Visible = True
-        dropDownListBoxShowing = True
+        _dropDownListBox.Visible = True
+        _dropDownListBoxShowing = True
 
-        Debug.Assert(dropDownListBox.Parent Is Nothing, _
+        Debug.Assert(_dropDownListBox.Parent Is Nothing, _
             "ShowDropDownListBox has been called multiple times before HideDropDownListBox")
 
         ' Add dropDownListBox to the DataGridView. 
-        Me.DataGridView.Controls.Add(dropDownListBox)
+        Me.DataGridView.Controls.Add(_dropDownListBox)
 
         ' Set the input focus to dropDownListBox. 
-        dropDownListBox.Focus()
+        _dropDownListBox.Focus()
 
         ' Invalidate the cell so that the drop-down button will repaint
         ' in the pressed state. 
@@ -608,10 +603,10 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
 
         ' Hide dropDownListBox, remove handlers from its events, and remove 
         ' it from the DataGridView control. 
-        dropDownListBoxShowing = False
-        dropDownListBox.Visible = False
+        _dropDownListBoxShowing = False
+        _dropDownListBox.Visible = False
         UnhandleDropDownListBoxEvents()
-        Me.DataGridView.Controls.Remove(dropDownListBox)
+        Me.DataGridView.Controls.Remove(_dropDownListBox)
 
         ' Invalidate the cell so that the drop-down button will repaint
         ' in the unpressed state. 
@@ -626,7 +621,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' </summary>
     Private Sub SetDropDownListBoxBounds()
 
-        Debug.Assert(filters.Count > 0, "filters.Count <= 0")
+        Debug.Assert(_filters.Count > 0, "filters.Count <= 0")
 
         ' Declare variables that will be used in the calculation, 
         ' initializing dropDownListBoxHeight to account for the 
@@ -639,12 +634,12 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         ' For each formatted value in the filters dictionary Keys collection,
         ' add its height to dropDownListBoxHeight and, if it is wider than 
         ' all previous values, set dropDownListBoxWidth to its width.
-        Dim graphics As Graphics = dropDownListBox.CreateGraphics()
+        Dim graphics As Graphics = _dropDownListBox.CreateGraphics()
         Try
             Dim filter As String
-            For Each filter In filters.Keys
+            For Each filter In _filters.Keys
                 Dim stringSizeF As SizeF = _
-                    graphics.MeasureString(filter, dropDownListBox.Font)
+                    graphics.MeasureString(filter, _dropDownListBox.Font)
                 dropDownListBoxHeight += CInt(Int(stringSizeF.Height))
                 currentWidth = CType(stringSizeF.Width, Int32)
                 If dropDownListBoxWidth < currentWidth Then
@@ -713,7 +708,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         End If
 
         ' Set the ListBox.Bounds property using the calculated values. 
-        dropDownListBox.Bounds = New Rectangle(dropDownListBoxLeft, _
+        _dropDownListBox.Bounds = New Rectangle(dropDownListBoxLeft, _
             DropDownButtonBounds.Bottom, dropDownListBoxWidth, _
             dropDownListBoxHeight)
 
@@ -741,7 +736,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
             ' Calculate the height of the list box, using the combined 
             ' height of all items plus 2 for the top and bottom border. 
             Dim listMaxHeight As Int32 = _
-                dropDownListBoxMaxLinesValue * dropDownListBox.ItemHeight + 2
+                _dropDownListBoxMaxLinesValue * _dropDownListBox.ItemHeight + 2
 
             ' Return the smaller of the two values. 
             If listMaxHeight < dataGridViewMaxHeight Then
@@ -761,18 +756,18 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' and keyboard input.
     ''' </summary>
     Private Sub HandleDropDownListBoxEvents()
-        AddHandler dropDownListBox.MouseClick, AddressOf DropDownListBox_MouseClick
-        AddHandler dropDownListBox.LostFocus, AddressOf DropDownListBox_LostFocus
-        AddHandler dropDownListBox.KeyDown, AddressOf DropDownListBox_KeyDown
+        AddHandler _dropDownListBox.MouseClick, AddressOf DropDownListBox_MouseClick
+        AddHandler _dropDownListBox.LostFocus, AddressOf DropDownListBox_LostFocus
+        AddHandler _dropDownListBox.KeyDown, AddressOf DropDownListBox_KeyDown
     End Sub
 
     ''' <summary>
     ''' Removes the ListBox event handlers. 
     ''' </summary>
     Private Sub UnhandleDropDownListBoxEvents()
-        RemoveHandler dropDownListBox.MouseClick, AddressOf DropDownListBox_MouseClick
-        RemoveHandler dropDownListBox.LostFocus, AddressOf DropDownListBox_LostFocus
-        RemoveHandler dropDownListBox.KeyDown, AddressOf DropDownListBox_KeyDown
+        RemoveHandler _dropDownListBox.MouseClick, AddressOf DropDownListBox_MouseClick
+        RemoveHandler _dropDownListBox.LostFocus, AddressOf DropDownListBox_LostFocus
+        RemoveHandler _dropDownListBox.KeyDown, AddressOf DropDownListBox_KeyDown
     End Sub
 
     ''' <summary>
@@ -787,7 +782,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
 
         ' Continue only if the mouse click was in the content area
         ' and not on the scroll bar. 
-        If Not dropDownListBox.DisplayRectangle.Contains(e.X, e.Y) Then
+        If Not _dropDownListBox.DisplayRectangle.Contains(e.X, e.Y) Then
             Return
         End If
 
@@ -800,7 +795,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' Indicates whether the drop-down list lost focus because the
     ''' user clicked the drop-down button. 
     ''' </summary>
-    Private lostFocusOnDropDownButtonClick As Boolean
+    Private _lostFocusOnDropDownButtonClick As Boolean
 
     ''' <summary>
     ''' Hides the drop-down list when it loses focus. 
@@ -814,7 +809,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         If DropDownButtonBounds.Contains( _
             Me.DataGridView.PointToClient( _
             New Point(Control.MousePosition.X, Control.MousePosition.Y))) Then
-            lostFocusOnDropDownButtonClick = True
+            _lostFocusOnDropDownButtonClick = True
         End If
         HideDropDownList()
     End Sub
@@ -869,7 +864,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
 
         ' Reset the filters dictionary and initialize some flags
         ' to track whether special filter options are needed. 
-        filters.Clear()
+        _filters.Clear()
         Dim containsBlanks As Boolean = False
         Dim containsNonBlanks As Boolean = False
 
@@ -903,7 +898,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
 
                     If (String.Compare(Me.OwningColumn.DataPropertyName, _
                         prop.Name, True, _
-                        System.Globalization.CultureInfo.InvariantCulture) = 0) Then
+                        CultureInfo.InvariantCulture) = 0) Then
 
                         value = prop.GetValue(item)
                         Exit For
@@ -920,7 +915,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
 
                     If (String.Compare(Me.OwningColumn.DataPropertyName, _
                         prop.Name, True, _
-                        System.Globalization.CultureInfo.InvariantCulture) = 0) Then
+                        CultureInfo.InvariantCulture) = 0) Then
 
                         value = prop.GetValue(item, Nothing)
                         Exit For
@@ -962,14 +957,14 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
             If String.IsNullOrEmpty(formattedValue) Then
                 ' Skip empty values, but note that they are present.
                 containsBlanks = True
-            ElseIf Not filters.Contains(formattedValue) Then
+            ElseIf Not _filters.Contains(formattedValue) Then
                 ' Note whether non-empty values are present. 
                 containsNonBlanks = True
 
                 ' For all non-empty values, add the formatted and 
                 ' unformatted string representations to the filters 
                 ' dictionary.
-                filters.Add(formattedValue, value.ToString())
+                _filters.Add(formattedValue, value.ToString())
             End If
         Next value
 
@@ -981,10 +976,10 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         ' Add special filter options to the filters dictionary
         ' along with null values, since unformatted representations
         ' are not needed. 
-        filters.Insert(0, "(All)", Nothing)
+        _filters.Insert(0, "(All)", Nothing)
         If containsBlanks AndAlso containsNonBlanks Then
-            filters.Add("(Blanks)", Nothing)
-            filters.Add("(NonBlanks)", Nothing)
+            _filters.Add("(Blanks)", Nothing)
+            _filters.Add("(NonBlanks)", Nothing)
         End If
 
     End Sub 'PopulateFilters
@@ -1004,21 +999,21 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         End If
 
         ' If the column is not filtered, return the filter string unchanged. 
-        If Not filtered Then
+        If Not _filtered Then
             Return filter
         End If
 
-        If filter.IndexOf(currentColumnFilter) > 0 Then
+        If filter.IndexOf(_currentColumnFilter) > 0 Then
             ' If the current column filter is not the first filter, return
             ' the specified filter value without the current column filter 
             ' and without the preceding " AND ". 
-            Return filter.Replace(" AND " & currentColumnFilter, String.Empty)
+            Return filter.Replace(" AND " & _currentColumnFilter, String.Empty)
         Else
-            If filter.Length > currentColumnFilter.Length Then
+            If filter.Length > _currentColumnFilter.Length Then
                 ' If the current column filter is the first of multiple 
                 ' filters, return the specified filter value without the 
                 ' current column filter and without the subsequent " AND ". 
-                Return filter.Replace(currentColumnFilter & " AND ", String.Empty)
+                Return filter.Replace(_currentColumnFilter & " AND ", String.Empty)
             Else
                 ' If the current column filter is the only filter, 
                 ' return the empty string.
@@ -1035,12 +1030,12 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     Private Sub UpdateFilter()
 
         ' Continue only if the selection has changed.
-        If dropDownListBox.SelectedItem.ToString().Equals(selectedFilterValue) Then
+        If _dropDownListBox.SelectedItem.ToString().Equals(_selectedFilterValue) Then
             Return
         End If
 
         ' Store the new selection value. 
-        selectedFilterValue = dropDownListBox.SelectedItem.ToString()
+        _selectedFilterValue = _dropDownListBox.SelectedItem.ToString()
 
         ' Cast the data source to an IBindingListView.
         Dim data As IBindingListView = _
@@ -1051,10 +1046,10 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
 
         ' If the user selection is (All), remove any filter currently 
         ' in effect for the column. 
-        If selectedFilterValue.Equals("(All)") Then
+        If _selectedFilterValue.Equals("(All)") Then
             data.Filter = FilterWithoutCurrentColumn(data.Filter)
-            filtered = False
-            currentColumnFilter = String.Empty
+            _filtered = False
+            _currentColumnFilter = String.Empty
             Return
         End If
 
@@ -1069,7 +1064,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         ' For (Blanks) and (NonBlanks), the filter string determines whether
         ' the column value is null or an empty string. Otherwise, the filter
         ' string determines whether the column value is the selected value. 
-        Select Case selectedFilterValue
+        Select Case _selectedFilterValue
             Case "(Blanks)"
                 newColumnFilter = String.Format( _
                     "LEN(ISNULL(CONVERT([{0}],'System.String'),''))=0", columnProperty)
@@ -1078,7 +1073,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
                     "LEN(ISNULL(CONVERT([{0}],'System.String'),''))>0", columnProperty)
             Case Else
                 newColumnFilter = String.Format("[{0}]='{1}'", columnProperty, _
-                    CStr(filters(selectedFilterValue)).Replace("'", "''"))
+                    CStr(_filters(_selectedFilterValue)).Replace("'", "''"))
         End Select
 
         ' Determine the new filter string by removing the previous column 
@@ -1101,8 +1096,8 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         ' Indicate that the column is currently filtered
         ' and store the new column filter for use by subsequent
         ' calls to the FilterWithoutCurrentColumn method. 
-        filtered = True
-        currentColumnFilter = newColumnFilter
+        _filtered = True
+        _currentColumnFilter = newColumnFilter
 
     End Sub 'UpdateFilter
 
@@ -1206,7 +1201,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' The bounds of the drop-down button, or Rectangle.Empty if filtering 
     ''' is disabled or the button bounds need to be recalculated. 
     ''' </summary>
-    Private dropDownButtonBoundsValue As Rectangle = Rectangle.Empty
+    Private _dropDownButtonBoundsValue As Rectangle = Rectangle.Empty
 
     ''' <summary>
     ''' The bounds of the drop-down button, or Rectangle.Empty if filtering
@@ -1218,10 +1213,10 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
             If Not FilteringEnabled Then
                 Return Rectangle.Empty
             End If
-            If dropDownButtonBoundsValue = Rectangle.Empty Then
+            If _dropDownButtonBoundsValue = Rectangle.Empty Then
                 SetDropDownButtonBounds()
             End If
-            Return dropDownButtonBoundsValue
+            Return _dropDownButtonBoundsValue
         End Get
     End Property
 
@@ -1230,8 +1225,8 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' This indicates that the button bounds should be recalculated. 
     ''' </summary>
     Private Sub InvalidateDropDownButtonBounds()
-        If Not dropDownButtonBoundsValue.IsEmpty Then
-            dropDownButtonBoundsValue = Rectangle.Empty
+        If Not _dropDownButtonBoundsValue.IsEmpty Then
+            _dropDownButtonBoundsValue = Rectangle.Empty
         End If
     End Sub
 
@@ -1308,7 +1303,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
 
         ' Set the dropDownButtonBoundsValue value using the calculated 
         ' values, and adjust the cell padding accordingly.  
-        dropDownButtonBoundsValue = New Rectangle(left, top, buttonEdgeLength, buttonEdgeLength)
+        _dropDownButtonBoundsValue = New Rectangle(left, top, buttonEdgeLength, buttonEdgeLength)
         AdjustPadding((buttonEdgeLength + leftOffset))
 
     End Sub 'SetDropDownButtonBounds
@@ -1322,14 +1317,14 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         ' Determine the difference between the new and current 
         ' padding adjustment.
         Dim widthChange As Int32 = newDropDownButtonPaddingOffset - _
-            currentDropDownButtonPaddingOffset
+            _currentDropDownButtonPaddingOffset
 
         ' If the padding needs to change, store the new value and 
         ' make the change.
         If widthChange <> 0 Then
             ' Store the offset for the drop-down button separately from 
             ' the padding in case the client needs additional padding.
-            currentDropDownButtonPaddingOffset = newDropDownButtonPaddingOffset
+            _currentDropDownButtonPaddingOffset = newDropDownButtonPaddingOffset
 
             ' Create a new Padding using the adjustment amount, then add it
             ' to the cell's existing Style.Padding property value. 
@@ -1343,7 +1338,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' <summary>
     ''' The current width of the drop-down button. This field is used to adjust the cell padding.  
     ''' </summary>
-    Private currentDropDownButtonPaddingOffset As Int32
+    Private _currentDropDownButtonPaddingOffset As Int32
 
 #End Region 'button bounds
 
@@ -1352,7 +1347,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' <summary>
     ''' Indicates whether filtering is enabled for the owning column. 
     ''' </summary>
-    Private filteringEnabledValue As Boolean = True
+    Private _filteringEnabledValue As Boolean = True
 
     ''' <summary>
     ''' Gets or sets a value indicating whether filtering is enabled.
@@ -1364,7 +1359,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
             ' or if its DataSource property has not been set. 
             If Me.DataGridView Is Nothing OrElse _
                 Me.DataGridView.DataSource Is Nothing Then
-                Return filteringEnabledValue
+                Return _filteringEnabledValue
             End If
 
             ' If the DataSource property has been set, return a value that combines 
@@ -1372,7 +1367,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
             Dim data As BindingSource = _
                 TryCast(Me.DataGridView.DataSource, BindingSource)
             Debug.Assert(data IsNot Nothing)
-            Return filteringEnabledValue AndAlso data.SupportsFiltering
+            Return _filteringEnabledValue AndAlso data.SupportsFiltering
         End Get
 
         Set(ByVal value As Boolean)
@@ -1383,14 +1378,14 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
                 InvalidateDropDownButtonBounds()
             End If
 
-            filteringEnabledValue = value
+            _filteringEnabledValue = value
         End Set
     End Property
 
     ''' <summary>
     ''' Indicates whether automatic sorting is enabled. 
     ''' </summary>
-    Private automaticSortingEnabledValue As Boolean = True
+    Private _automaticSortingEnabledValue As Boolean = True
 
     ''' <summary>
     ''' Gets or sets a value indicating whether automatic sorting is 
@@ -1399,10 +1394,10 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     <DefaultValue(True)> _
     Public Property AutomaticSortingEnabled() As Boolean
         Get
-            Return automaticSortingEnabledValue
+            Return _automaticSortingEnabledValue
         End Get
         Set(ByVal value As Boolean)
-            automaticSortingEnabledValue = value
+            _automaticSortingEnabledValue = value
             If OwningColumn IsNot Nothing Then
                 If value Then
                     OwningColumn.SortMode = _
@@ -1418,7 +1413,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     ''' <summary>
     ''' The maximum number of lines in the drop-down list. 
     ''' </summary>
-    Private dropDownListBoxMaxLinesValue As Int32 = 20
+    Private _dropDownListBoxMaxLinesValue As Int32 = 20
 
     ''' <summary>
     ''' Gets or sets the maximum number of lines to display in the drop-down filter list. 
@@ -1427,10 +1422,10 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
     <DefaultValue(20)> _
     Public Property DropDownListBoxMaxLines() As Int32
         Get
-            Return dropDownListBoxMaxLinesValue
+            Return _dropDownListBoxMaxLinesValue
         End Get
         Set(ByVal value As Int32)
-            dropDownListBoxMaxLinesValue = value
+            _dropDownListBoxMaxLinesValue = value
         End Set
     End Property
 
@@ -1449,7 +1444,7 @@ Public Class DataGridViewAutoFilterColumnHeaderCell
         Public Sub New()
             Visible = False
             IntegralHeight = True
-            BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            BorderStyle = BorderStyle.FixedSingle
             TabStop = False
         End Sub
 
