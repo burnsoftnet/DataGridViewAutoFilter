@@ -17,6 +17,7 @@
     <CleanupOutputPath>true</CleanupOutputPath>
     <HelpFileName>DataGridViewAutoFilter</HelpFileName>
     <HelpFileNamingMethod>MemberName</HelpFileNamingMethod>
+    <HelpFileLoadIndexPanelOnDemand>false</HelpFileLoadIndexPanelOnDemand>
     <ImageFolderPath />
     <Theme>FlatMain</Theme>
     <HtmlFormats>
