@@ -19,6 +19,9 @@ This is mostly code less, just add the autofilter as a new bound field in your d
 
 ### v4.8.1.34861
 
+* Updated to .net framework 4.8.1
+* 
+
 ### v4.7.2.34861
 
 * Using .net framework 4.7.2
