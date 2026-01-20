@@ -17,7 +17,7 @@ This is mostly code less, just add the autofilter as a new bound field in your d
 
 ## Change Log
 
-### v4.8.1.34861
+### v4.8.3.882
 
 * Updated to .net framework 4.8.1
 * 

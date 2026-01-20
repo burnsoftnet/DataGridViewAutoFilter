@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>4.8.3.882-beta</version>
     <title>$title$</title>
     <authors>$author$</authors>
 	  <projectUrl>https://github.com/burnsoftnet/DataGridViewAutoFilter.git</projectUrl>
@@ -14,7 +14,7 @@
 	  <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Updated to .net version 4.7.2</releaseNotes>
-    <copyright>Copyright 2010-2021</copyright>
+    <copyright>Copyright 2010-2026</copyright>
     <tags>BurnSoft VB.NET DataGrid AutoFilter</tags>
   </metadata>
 	<files>
