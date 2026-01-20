@@ -17,6 +17,7 @@
     <CleanupOutputPath>true</CleanupOutputPath>
     <HelpFileName>DataGridViewAutoFilter</HelpFileName>
     <HelpFileNamingMethod>MemberName</HelpFileNamingMethod>
+    <HelpFileLoadIndexPanelOnDemand>false</HelpFileLoadIndexPanelOnDemand>
     <ImageFolderPath />
     <Theme>FlatMain</Theme>
     <HtmlFormats>
@@ -45,7 +46,7 @@
     </SyntaxLanguages>
     <ResolveCrefLinks>true</ResolveCrefLinks>
     <HeaderText>www.burnsoft.net</HeaderText>
-    <FooterText>www.burnsoft.net 2010-2021</FooterText>
+    <FooterText>www.burnsoft.net 2010-2026</FooterText>
     <ConceptualContent>
       <ContentLayout />
       <MediaContent />
