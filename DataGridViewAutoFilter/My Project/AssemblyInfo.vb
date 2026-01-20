@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Add On to the DataGrid to filter out the results")> 
 <Assembly: AssemblyCompany("BurnSoft www.burnsoft.net")> 
 <Assembly: AssemblyProduct("BS DataGridViewAutoFilter")>
-<Assembly: AssemblyCopyright("Copyright © BurnSoft 2010-2021")>
+<Assembly: AssemblyCopyright("Copyright © BurnSoft 2010-2026")>
 <Assembly: AssemblyTrademark("www.burnsoft.net")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("4.7.2.*")>
-<Assembly: AssemblyFileVersion("4.7.2.1")>
+<Assembly: AssemblyVersion("4.8.3.882")>
+<Assembly: AssemblyFileVersion("4.8.3.882")>

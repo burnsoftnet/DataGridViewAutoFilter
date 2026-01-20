@@ -10,7 +10,7 @@
     <RootNamespace>DataGridViewAutoFilter</RootNamespace>
     <AssemblyName>DataGridViewAutoFilter</AssemblyName>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
