@@ -4,7 +4,7 @@
     <id>$id$</id>
     <version>4.8.3.882-beta</version>
     <title>$title$</title>
-    <authors>$author$</authors>
+    <authors>burnsoft.net</authors>
 	  <projectUrl>https://github.com/burnsoftnet/DataGridViewAutoFilter.git</projectUrl>
 	  <owners>burnsoftnet</owners>
 	  <repository type="git" url="https://github.com/burnsoftnet/DataGridViewAutoFilter.git" />
@@ -12,8 +12,8 @@
 	  <icon>bswtsicon.png</icon>
 	  <license type="expression">MIT</license>
 	  <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Updated to .net version 4.7.2</releaseNotes>
+    <description>Add On to the DataGrid to filter out the results$</description>
+    <releaseNotes>Updated to .net version 4.8.1</releaseNotes>
     <copyright>Copyright 2010-2026</copyright>
     <tags>BurnSoft VB.NET DataGrid AutoFilter</tags>
   </metadata>
